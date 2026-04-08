@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>FROSCH WUNDER</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         @font-face {
             font-family: 'fuentepropia';
             src: url('FuenteGdd-Regular.ttf.otf') format('opentype');
@@ -25,18 +29,22 @@
         }
 
         .tomo-superior {
+            background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/bordepergamino.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 80px;
-            background: linear-gradient(to bottom, #4e342e, #795548, #4e342e);
+            /*background: linear-gradient(to bottom, #4e342e, #795548, #4e342e);*/
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border-bottom: 3px solid #3e2723;
+            /*border-bottom: 3px solid #3e2723;*/
         }
 
         nav a {
@@ -74,6 +82,7 @@
             font-size: 3rem;
             text-align: center;
             margin-bottom: 25px;
+            scroll-margin-top: 100px;
         }
 
         h2 {
@@ -81,6 +90,7 @@
             font-size: 1.5rem;
             text-align: center;
             margin-bottom: 20px;
+            scroll-margin-top: 100px;
         }
 
         form {
@@ -88,8 +98,8 @@
             font-size: 1rem;
             text-align: left;
         }
-        
-        .comentarios{
+
+        .comentarios {
             font-family: serif;
             font-size: 1rem;
             text-align: left;
@@ -142,16 +152,18 @@
             <p> Cria &ensp;moscas &ensp;y &ensp;te &ensp;sacaran &ensp;la &ensp;lengua</p>
             <p style="height: 1000px; padding-top: 50px;"></p>
         </div>
-
+        <h2 id="b">Descripcion</h2>
         <div>
-            <h2 id="b">Descripcion</h2>
             <p style="font-family:serif ;font-size: 1.2rem;"> Juego RPG 2D de ranas mágicas,
                 basado en la gestión de recursos mágicos y batallas por turnos
                 contra animales, con el fin de ir conquistando las 4 torres del mapa.</p><br>
             <hr color="#4e342e">
-            <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapardoSinFondo.png?raw=true" alt="Imagen sapo" width="272" height="400" align = "middle">
+            <p>
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapardoSinFondo.png?raw=true"
+                    alt="Imagen sapo" width="272" height="400" align=middle />
+            </p>
             <p style="height: 1000px; padding-top: 50px;"></p>
-            
+
         </div>
 
         <div>
@@ -193,13 +205,14 @@
             <p><strong>FelipeMaster:</strong> ¡Me encanta el arte del juego! - <em> 30/01/26 </em></p>
             <hr>
             <p><strong>PabloAlboran:</strong> ¿Para cuándo la beta? - <em> 13/02/26 </em></p>
-             <hr>
+            <hr>
             <p><strong>PaquitaSalas:</strong> No os pago ni un euro - <em> 06/04/26 </em></p>
         </div>
     </main>
     <footer class="tomo-inferior">
         <br>
-        <p>hola</p><hr size="5" color="#4e342e">
+        <p>hola</p>
+        <hr size="5" color="#4e342e">
         <br><br><br><br>
         <p> ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un
             producto real. Práctica de Multimedia, 1º GDDV - Curso 24/25 (Móstoles/Quintana), URJC. La URJC no se hace
