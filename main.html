@@ -131,6 +131,21 @@
         summary {
             font-family: serif;
         }
+
+        .carrusel {
+            overflow: clip;
+            position: relative;
+        }
+
+        .carrusel-inner img {
+            display: none;
+            margin: 0 auto;
+        }
+
+        .carrusel-inner img.active {
+            display: block;
+            
+        }
     </style>
 </head>
 
@@ -167,12 +182,22 @@
 
         <div>
             <h2 id="b"> ARTE</h2><br>
+
+            <div class="carrusel">
+                <div class="carrusel-inner">
+                    <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapardoSinFondo.png?raw=true"
+                        class="active" alt="Foto 1" width="272" height="400" align=middle>
+                    <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapoFlaco.png?raw=true" alt="Foto 2"
+                        width="264" height="375" align=middle>
+                </div>
+            </div>
             <p>
                 <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapardoSinFondo.png?raw=true"
                     alt="Imagen sapo" width="272" height="400" align=middle />
                 <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapoFlaco.png?raw=true"
                     alt="Imagen sapo" width="264" height="375" align=middle />
-            </p><br>
+            </p>
+            <br>
             <hr color="#4e342e">
             <p style="height: 10px; padding-top: 30px;"></p>
             <h2>Fuente</h2><br>
@@ -258,6 +283,17 @@
             lista.insertBefore(nuevoComentario, lista.querySelector('h3').nextSibling);
 
         });
+    </script>
+
+    <script>
+        let indice = 0;
+        const imagenes = document.querySelectorAll('.carrusel-inner img');
+        function cambiarImagen() {
+            imagenes[indice].classList.remove('active');
+            indice = (indice + 1) % imagenes.length;
+            imagenes[indice].classList.add('active');
+        }
+        setInterval(cambiarImagen, 3000);
     </script>
 
 </body>
