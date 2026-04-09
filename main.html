@@ -144,7 +144,72 @@
 
         .carrusel-inner img.active {
             display: block;
-            
+
+        }
+
+        .contenedor-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: left;
+            width: 100%;
+            font-family: serif;
+        }
+
+        .faq-item {
+            display: flex;
+            width: fit-content;
+            max-width: 900px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .faq-pregunta,
+        .faq-respuesta-contenido {
+            background: #f5e6c4;
+            background-image: linear-gradient(to bottom, #e8d5a5 0%, #f5e6c4 20%, #f5e6c4 80%, #e8d5a5 100%);
+            color: #3e2723;
+            display: flex;
+            align-items: center;
+            padding: 5px 5px;
+            min-height: 40px;
+        }
+
+        .faq-pregunta {
+            border-left: 15px solid #4e342e;
+            border-right: 8px solid #4e342e;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 2;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            transition: border-right 0.3s;
+        }
+
+        .faq-item.abierto .faq-pregunta {
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-respuesta {
+            max-width: 0;
+            overflow: hidden;
+            transition: max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+        }
+
+        .faq-respuesta-contenido {
+            width: 450px;
+            border-right: 15px solid #4e342e;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            font-style: italic;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item.abierto .faq-respuesta {
+            max-width: 500px;
         }
     </style>
 </head>
@@ -208,24 +273,42 @@
 
         <div>
             <h2 id="d">FAQ</h2>
-            <details>
-                <summary>Pregunta 1: ¿Habrá alguna demo previa al juego?</summary>
-                <p>Estamos trabajando en ello, todo va como la seda.</p>
-            </details><br>
-            <details>
-                <summary>Pregunta 2: ¿Cuando veremos más imágenes del juego? Estoy impaciente</summary>
-                <p>Dentro de nada tendremos más imagenes disponibles.</p>
-            </details><br>
-            <details>
-                <summary>Pregunta 3: ¿ Como será el sistema de combate?</summary>
-                <p>No queremos dar más detalles, esperad y os gustará...</p>
-            </details><br>
-            <details>
-                <summary>Pregunta 4: ¿Habrá contenido adicional tras el lanzamiento?</summary>
-                <p>Por supuesto, revisa la línea del CrowdFunding y en ella se ven reflejadas las diferentes metas.</p>
-            </details><br>
+
+            <div class="contenedor-faq">
+                <div class="faq-item">
+                    <div class="faq-pregunta">Pregunta 1: ¿Habrá alguna demo previa al juego?</div>
+                    <div class="faq-respuesta">
+                        <div class="faq-respuesta-contenido">Estamos trabajando en ello, todo va como la seda.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">Pregunta 2: ¿Cuando veremos más imágenes?</div>
+                    <div class="faq-respuesta">
+                        <div class="faq-respuesta-contenido">Dentro de nada tendremos más imagenes disponibles para la
+                            comunidad.</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">Pregunta 3: ¿Como será el sistema de combate?</div>
+                    <div class="faq-respuesta">
+                        <div class="faq-respuesta-contenido">No queremos dar más detalles, esperad y os gustará...</div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-pregunta">Pregunta 4: ¿Habrá contenido adicional tras el lanzamiento?</div>
+                    <div class="faq-respuesta">
+                        <div class="faq-respuesta-contenido">Por supuesto, revisa la línea del CrowdFunding y en ella se
+                            ven reflejadas las diferentes metas.</div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
             <hr color="#4e342e">
-            <p style="height: 1000px; padding-top: 30px;"></p>
+            <p style="height: 200px; padding-top: 30px;"></p>
         </div>
 
         <h3 id="c">Apuntate &ensp; para &ensp; recibir &ensp; noticias</h3>
@@ -294,6 +377,17 @@
             imagenes[indice].classList.add('active');
         }
         setInterval(cambiarImagen, 3000);
+    </script>
+
+    <script>
+        const pergaminosFAQ = document.querySelectorAll('.faq-pregunta');
+
+        pergaminosFAQ.forEach(pregunta => {
+            pregunta.addEventListener('click', function () {
+                const item = this.parentElement;
+                item.classList.toggle('abierto');
+            });
+        });
     </script>
 
 </body>
