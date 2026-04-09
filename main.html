@@ -135,6 +135,7 @@
 </head>
 
 <body>
+
     <header class="tomo-superior">
         <nav>
             <a href="#a">Inicio</a>
@@ -169,7 +170,7 @@
             <p>
                 <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapardoSinFondo.png?raw=true"
                     alt="Imagen sapo" width="272" height="400" align=middle />
-                    <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapoFlaco.png?raw=true"
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/SapoFlaco.png?raw=true"
                     alt="Imagen sapo" width="264" height="375" align=middle />
             </p><br>
             <hr color="#4e342e">
@@ -204,39 +205,61 @@
 
         <h3 id="c">Apuntate &ensp; para &ensp; recibir &ensp; noticias</h3>
         <br />
-        <form>
 
+        <form id="form-comentario">
             <label>Nombre:</label><br>
-            <input type="text" required><br><br>
+            <input type="text" id="autor" required><br><br>
 
             <label>Comentario:</label><br>
-            <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br><br>
+            <textarea id="texto-comentario" rows="4" cols="50" required></textarea><br><br>
             <button type="submit">Enviar</button>
-
         </form>
         <br>
-        <div class="comentarios">
+
+        <div class="comentarios" id="lista-comentarios">
             <h3>Comentarios:</h3>
             <p><strong>FelipeMaster:</strong> ¡Me encanta el arte del juego! - <em> 30/01/26 </em></p>
             <hr>
             <p><strong>PabloAlboran:</strong> ¿Para cuándo la beta? - <em> 13/02/26 </em></p>
             <hr>
             <p><strong>PaquitaSalas:</strong> No os pago ni un euro - <em> 06/04/26 </em></p>
+            <hr>
+            <p style="height: 1000px; padding-top: 30px;"></p>
         </div>
+
+    </main>
+
 
     </main>
     <footer class="tomo-inferior">
         <br>
         <p>EDDICOR ESTUDIO</p><br>
         <hr size="5" color="#4e342e">
-        <br><br><br>
+        <br><br>
         <p>
-
             ATENCIÓN: Esta página simula la campaña de microfinanciación de un videojuego ficticio y no representa un
-            producto real. Práctica de Multimedia, 1º GDDV - Curso 24/25 (Móstoles/Quintana), URJC.<br> La URJC no se hace
-            responsable del contenido expuesto por el autor.
+            producto real. Práctica de Multimedia, 1º GDDV - Curso 24/25 (Móstoles/Quintana), URJC.<br> La URJC no se
+            hace responsable del contenido expuesto por el autor.
         </p>
     </footer>
+    <script>
+        const form = document.getElementById('form-comentario');
+        const lista = document.getElementById('lista-comentarios');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const autor = document.getElementById('autor').value;
+            const texto = document.getElementById('texto-comentario').value;
+            const fecha = new Date().toLocaleDateString('es-ES');
+            const nuevoComentario = document.createElement('div');
+            nuevoComentario.innerHTML = `
+            <p><strong>${autor}:</strong> ${texto} - <em>${fecha}</em></p>
+            <hr>
+        `;
+            lista.insertBefore(nuevoComentario, lista.querySelector('h3').nextSibling);
+
+        });
+    </script>
 
 </body>
 
