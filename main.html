@@ -38,12 +38,22 @@
             background: linear-gradient(to bottom, #4e342e, #795548, #4e342e);
             display: flex;
             align-items: center;
-            justify-content: right;
             z-index: 1000;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             border-bottom: 3px solid #3e2723;
         }
-        
+
+        nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0 2%;
+        }
+
+        nav a:first-child {
+            margin-right: auto;
+        }
+
         nav a {
             color: #f5e6c4;
             text-decoration: none;
@@ -55,6 +65,7 @@
             letter-spacing: 2px;
             font-family: serif;
             scroll-margin-top: 100px;
+            justify-content: center;
         }
 
         nav a:hover {
@@ -68,7 +79,7 @@
             min-height: 100vh;
             padding: 120px 10% 60px 10%;
             background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/fondo.jpg?raw=true');
-            background-size:100% 100%;
+            background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -168,7 +179,7 @@
         .faq-pregunta,
         .faq-respuesta-contenido {
             background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Fondo_Oscuro.png?raw=true');
-            background-size:100% 100%;
+            background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
             color: #3e2723;
@@ -208,6 +219,7 @@
             border-radius: 0 5px 5px 0;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
             font-style: italic;
+            font-weight: bold;
             border-left: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -234,7 +246,7 @@
         <nav>
             <a href="#a">
                 <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-NORMAL-GORDO.png?raw=true"
-                        alt="LOGO" width="40" height="40" align=center>
+                    alt="LOGO" width="70" height="70" align=center>
             </a>
             <a href="#b">Arte</a>
             <a href="#d">FAQ</a>
