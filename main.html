@@ -238,81 +238,86 @@
             margin: 0 auto;
         }
 
-.contenedor-simbolos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-}
+        .contenedor-simbolos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-.simbolo-tipo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-    border: 4px solid transparent;
-    background-color: rgba(0, 0, 0, 0.2);
-}
+        .simbolo-tipo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            border: 4px solid transparent;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
 
-.simbolo-tipo:hover {
-    transform: scale(1.15);
-}
+        .simbolo-tipo:hover {
+            transform: scale(1.15);
+        }
 
-.simbolo-tipo.seleccionado {
-    border-color: #f5e6c4;
-    box-shadow: 0 0 15px rgba(245, 230, 196, 0.8);
-    transform: scale(1.1);
-}
+        .simbolo-tipo.seleccionado {
+            border-color: #f5e6c4;
+            box-shadow: 0 0 15px rgba(245, 230, 196, 0.8);
+            transform: scale(1.1);
+        }
 
-#pergamino-tipos {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/fondo.jpg?raw=true');
-    background-size: cover;
-    background-position: center;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 5px;
-    border: 0px solid transparent;
-}
+        #pergamino-tipos {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/fondo.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 5px;
+            border: 0px solid transparent;
+        }
 
-#pergamino-tipos.abierto {
-    max-height: 800px;
-    border: 5px solid #4e342e;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.5);
-}
+        #pergamino-tipos.abierto {
+            max-height: 800px;
+            border: 5px solid #4e342e;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
 
-.contenido-pergamino-tipos {
-    padding: 40px;
-    text-align: center;
-}
+        .contenido-pergamino-tipos {
+            padding: 40px;
+            text-align: center;
+        }
 
-.carrusel-tipos {
-    position: relative;
-    width: 100%;
-    height: 800px;
-    overflow: hidden;
-}
+        .carrusel-tipos {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            overflow: hidden;
+        }
 
-.carrusel-inner-tipos img {
-    display: none;
-    margin: 0 auto;
-    max-height: 100%;
-    border-radius: 10px;
-}
+        .carrusel-inner-tipos img {
+            display: none;
+            margin: 0 auto;
+            max-height: 100%;
+            border-radius: 10px;
+        }
 
-.carrusel-inner-tipos img.active {
-    display: block;
-    animation: aparecer 0.5s ease-in;
-}
+        .carrusel-inner-tipos img.active {
+            display: block;
+            animation: aparecer 0.5s ease-in;
+        }
 
-@keyframes aparecer {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -355,25 +360,40 @@
             <h2>TIPOS</h2>
 
             <div class="contenedor-simbolos">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Roca-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Roca" alt="Roca">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Oscuridad-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Oscuridad" alt="Oscuridad">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Sonido-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Sonido" alt="Sonido">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Descomposicion-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Descomposicion" alt="Descomposicion">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Agua-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Agua" alt="Agua">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Luz-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Luz" alt="Luz">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Natura-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Natura" alt="Natura">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Ilusion-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Ilusion" alt="Ilusion">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Fuego-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Fuego" alt="Fuego">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Electrico-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Electrico" alt="Electrico">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Viento-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Aire" alt="Aire">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Necromancia-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Necromancia" alt="Necromancia">
-                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Sapo-removebg-preview.png?raw=true" class="simbolo-tipo" data-tipo="Sapo" alt="Sapo">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Roca-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Roca" alt="Roca">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Oscuridad-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Oscuridad" alt="Oscuridad">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Sonido-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Sonido" alt="Sonido">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Descomposicion-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Descomposicion" alt="Descomposicion">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Agua-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Agua" alt="Agua">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Luz-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Luz" alt="Luz">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Natura-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Natura" alt="Natura">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Ilusion-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Ilusion" alt="Ilusion">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Fuego-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Fuego" alt="Fuego">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Electrico-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Electrico" alt="Electrico">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Viento-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Aire" alt="Aire">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Necromancia-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Necromancia" alt="Necromancia">
+                <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Sapo-removebg-preview.png?raw=true"
+                    class="simbolo-tipo" data-tipo="Sapo" alt="Sapo">
             </div>
 
             <div id="pergamino-tipos">
                 <div class="contenido-pergamino-tipos">
                     <h3 id="titulo-tipo" style="font-size: 2rem; margin-bottom: 15px;">Nombre del Tipo</h3>
-                    <p id="desc-tipo" style="font-size: 1.2rem; font-style: italic; margin-bottom: 20px; font-family: serif;">Descripción
+                    <p id="desc-tipo"
+                        style="font-size: 1.2rem; font-style: italic; margin-bottom: 20px; font-family: serif;">
+                        Descripción
                         del tipo</p>
 
                     <div class="carrusel-tipos">
@@ -537,171 +557,182 @@
     </script>
 
     <script>
-    const baseDatosSapos = {
-        "Roca": {
-            titulo: "Roca",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-PEDROLO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-PEDROLO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-PEDROLO.png?raw=true"
-            ]
-        },
-        "Oscuridad": {
-            titulo: "Oscuridad",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-OSCURIDAD.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-OSCURIDAD.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-OSCURIDAD.png?raw=true"
-            ]
-        },
-        "Sonido": {
-            titulo: "Sonido",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-SONIDO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-SONIDO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-SONIDO.png?raw=true"
-            ]
-        },
-        "Descomposicion": {
-            titulo: "Descomposicion",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-DESCOMPOSICION.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-DESCOMPOSICION.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-DESCOMPOSICION.png?raw=true"
-            ]
-        },
-        "Agua": {
-            titulo: "Agua",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-AGUA.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-AGUA.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-AGUA.png?raw=true"
-            ]
-        },
-        "Luz": {
-            titulo: "Luz",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-LUZ.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-LUZ.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-LUZ.png?raw=true"
-            ]
-        },
-        "Natura": {
-            titulo: "Natura",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-NATURAL.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-NATURAL.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-NATURAL.png?raw=true"
-            ]
-        },
-        "Ilusion": {
-            titulo: "Ilusion",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-ILUSION.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-ILUSION.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-ILUSION.png?raw=true"
-            ]
-        },
-        "Fuego": {
-            titulo: "Fuego",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-FUEGO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-FUEGO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-FUEGO.png?raw=true"
-            ]
-        },
-        "Electrico": {
-            titulo: "Electrico",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-ELECTRICO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-ELECTRICO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-ELECTRICO.png?raw=true"
-            ]
-        },
-        "Aire": {
-            titulo: "Aire",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-AIRE.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-AIRE.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-AIRE.png?raw=true"
-            ]
-        },
-        "Necromancia": {
-            titulo: "Necromancia",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-NECROMANCIA.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-NECROMANCIA.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-NECROMANCIA.png?raw=true"
-            ]
-        },
-        "Sapo": {
-            titulo: "Sapo",
-            desc: "Descripcion aqui",
-            imagenes: [
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-SAPO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-SAPO.png?raw=true",
-                "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-SAPO.png?raw=true"
-            ]
-        }
-        
-    };
-
-    const simbolos = document.querySelectorAll('.simbolo-tipo');
-    const pergaminoTipos = document.getElementById('pergamino-tipos');
-    const tituloTipo = document.getElementById('titulo-tipo');
-    const descTipo = document.getElementById('desc-tipo');
-    const carruselImagenesTipos = document.getElementById('carrusel-imagenes-tipos');
-    
-    let intervaloCarruselTipos;
-
-    simbolos.forEach(simbolo => {
-        simbolo.addEventListener('click', function() {
-            simbolos.forEach(s => s.classList.remove('seleccionado'));
-            this.classList.add('seleccionado');
-
-            const tipoSeleccionado = this.getAttribute('data-tipo');
-            const infoSapo = baseDatosSapos[tipoSeleccionado];
-
-            if(infoSapo) {
-                tituloTipo.textContent = infoSapo.titulo;
-                descTipo.textContent = infoSapo.desc;
-
-                carruselImagenesTipos.innerHTML = '';
-                infoSapo.imagenes.forEach((urlImg, index) => {
-                    const nuevaImg = document.createElement('img');
-                    nuevaImg.src = urlImg;
-                    if(index === 0) nuevaImg.classList.add('active');
-                    carruselImagenesTipos.appendChild(nuevaImg);
-                });
-
-                clearInterval(intervaloCarruselTipos);
-                if(infoSapo.imagenes.length > 1) {
-                    let indiceTipos = 0;
-                    const imagenesActivas = carruselImagenesTipos.querySelectorAll('img');
-                    intervaloCarruselTipos = setInterval(() => {
-                        imagenesActivas[indiceTipos].classList.remove('active');
-                        indiceTipos = (indiceTipos + 1) % imagenesActivas.length;
-                        imagenesActivas[indiceTipos].classList.add('active');
-                    }, 3000);
-                }
-
-                pergaminoTipos.classList.add('abierto');
+        const baseDatosSapos = {
+            "Roca": {
+                titulo: "Roca",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-PEDROLO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-PEDROLO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-PEDROLO.png?raw=true"
+                ]
+            },
+            "Oscuridad": {
+                titulo: "Oscuridad",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-OSCURIDAD.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-OSCURIDAD.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-OSCURIDAD.png?raw=true"
+                ]
+            },
+            "Sonido": {
+                titulo: "Sonido",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-SONIDO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-SONIDO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-SONIDO.png?raw=true"
+                ]
+            },
+            "Descomposicion": {
+                titulo: "Descomposicion",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-DESCOMPOSICION.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-DESCOMPOSICION.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-DESCOMPOSICION.png?raw=true"
+                ]
+            },
+            "Agua": {
+                titulo: "Agua",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-AGUA.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-AGUA.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-AGUA.png?raw=true"
+                ]
+            },
+            "Luz": {
+                titulo: "Luz",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-LUZ.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-LUZ.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-LUZ.png?raw=true"
+                ]
+            },
+            "Natura": {
+                titulo: "Natura",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-NATURAL.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-NATURAL.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-NATURAL.png?raw=true"
+                ]
+            },
+            "Ilusion": {
+                titulo: "Ilusion",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-ILUSION.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-ILUSION.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-ILUSION.png?raw=true"
+                ]
+            },
+            "Fuego": {
+                titulo: "Fuego",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-FUEGO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-FUEGO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-FUEGO.png?raw=true"
+                ]
+            },
+            "Electrico": {
+                titulo: "Electrico",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-ELECTRICO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-ELECTRICO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-ELECTRICO.png?raw=true"
+                ]
+            },
+            "Aire": {
+                titulo: "Aire",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-AIRE.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-AIRE.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-AIRE.png?raw=true"
+                ]
+            },
+            "Necromancia": {
+                titulo: "Necromancia",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-NECROMANCIA.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-NECROMANCIA.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-NECROMANCIA.png?raw=true"
+                ]
+            },
+            "Sapo": {
+                titulo: "Sapo",
+                desc: "Descripcion aqui",
+                imagenes: [
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-SAPO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-SAPO.png?raw=true",
+                    "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-SAPO.png?raw=true"
+                ]
             }
+
+        };
+
+        const simbolos = document.querySelectorAll('.simbolo-tipo');
+        const pergaminoTipos = document.getElementById('pergamino-tipos');
+        const tituloTipo = document.getElementById('titulo-tipo');
+        const descTipo = document.getElementById('desc-tipo');
+        const carruselImagenesTipos = document.getElementById('carrusel-imagenes-tipos');
+
+        let intervaloCarruselTipos;
+
+        simbolos.forEach(simbolo => {
+            simbolo.addEventListener('click', function () {
+                simbolos.forEach(s => s.classList.remove('seleccionado'));
+                this.classList.add('seleccionado');
+
+                const tipoSeleccionado = this.getAttribute('data-tipo');
+                const infoSapo = baseDatosSapos[tipoSeleccionado];
+
+                if (infoSapo) {
+                    tituloTipo.textContent = infoSapo.titulo;
+                    descTipo.textContent = infoSapo.desc;
+
+                    carruselImagenesTipos.innerHTML = '';
+                    infoSapo.imagenes.forEach((urlImg, index) => {
+                        const nuevaImg = document.createElement('img');
+                        nuevaImg.src = urlImg;
+                        if (index === 0) nuevaImg.classList.add('active');
+                        carruselImagenesTipos.appendChild(nuevaImg);
+                    });
+
+                    clearInterval(intervaloCarruselTipos);
+                    if (infoSapo.imagenes.length > 1) {
+                        let indiceTipos = 0;
+                        const imagenesActivas = carruselImagenesTipos.querySelectorAll('img');
+                        intervaloCarruselTipos = setInterval(() => {
+                            imagenesActivas[indiceTipos].classList.remove('active');
+                            indiceTipos = (indiceTipos + 1) % imagenesActivas.length;
+                            imagenesActivas[indiceTipos].classList.add('active');
+                        }, 3000);
+                    }
+
+                    pergaminoTipos.classList.add('abierto');
+                }
+                const sonidoCroac = new Audio('croac.mp3');
+
+                sonidoCroac.volume = 0.6; 
+                sonidoCroac.preload = 'auto';
+
+                simbolos.forEach(simbolo => {
+                    simbolo.addEventListener('click', () => {
+                        sonidoCroac.currentTime = 0;
+                        sonidoCroac.play().catch(e => console.log("Audio en espera de interacción"));
+                    });
+                });
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 
