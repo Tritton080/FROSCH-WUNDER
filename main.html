@@ -675,7 +675,6 @@
                     "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-DELGADO-SAPO.png?raw=true"
                 ]
             }
-
         };
 
         const simbolos = document.querySelectorAll('.simbolo-tipo');
@@ -685,6 +684,10 @@
         const carruselImagenesTipos = document.getElementById('carrusel-imagenes-tipos');
 
         let intervaloCarruselTipos;
+
+        const sonidoCroac = new Audio('croac.mp3');
+        sonidoCroac.volume = 0.6; 
+        sonidoCroac.preload = 'auto';
 
         simbolos.forEach(simbolo => {
             simbolo.addEventListener('click', function () {
@@ -719,17 +722,9 @@
 
                     pergaminoTipos.classList.add('abierto');
                 }
-                const sonidoCroac = new Audio('croac.mp3');
 
-                sonidoCroac.volume = 0.6; 
-                sonidoCroac.preload = 'auto';
-
-                simbolos.forEach(simbolo => {
-                    simbolo.addEventListener('click', () => {
-                        sonidoCroac.currentTime = 0;
-                        sonidoCroac.play().catch(e => console.log("Audio en espera de interacción"));
-                    });
-                });
+                sonidoCroac.currentTime = 0;
+                sonidoCroac.play().catch(e => console.log("Audio en espera de interacción"));
             });
         });
     </script>
