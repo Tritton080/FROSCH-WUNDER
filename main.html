@@ -135,30 +135,6 @@
             font-family: serif;
         }
 
-
-        details {
-            font-size: 1.25rem;
-            font-family: serif;
-        }
-
-        summary {
-            font-family: serif;
-        }
-
-        .carrusel {
-            overflow: clip;
-            position: relative;
-        }
-
-        .carrusel-inner img {
-            display: none;
-            margin: 0 auto;
-        }
-
-        .carrusel-inner img.active {
-            display: block;
-        }
-
         .contenedor-faq {
             display: flex;
             flex-direction: column;
@@ -502,8 +478,6 @@
 
     </main>
 
-
-    </main>
     <footer class="tomo-inferior">
         <br>
         <p>EDDICOR ESTUDIO</p><br>
@@ -534,16 +508,6 @@
         });
     </script>
 
-    <script>
-        let indice = 0;
-        const imagenes = document.querySelectorAll('.carrusel-inner img');
-        function cambiarImagen() {
-            imagenes[indice].classList.remove('active');
-            indice = (indice + 1) % imagenes.length;
-            imagenes[indice].classList.add('active');
-        }
-        setInterval(cambiarImagen, 3000);
-    </script>
 
     <script>
         const pergaminosFAQ = document.querySelectorAll('.faq-pregunta');
