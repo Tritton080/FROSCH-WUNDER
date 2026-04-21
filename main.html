@@ -342,6 +342,70 @@
             box-shadow: 0 2px 0 #2c1c1a;
         }
 
+        /* Contenedor Principal de Objetivos */
+        .seccion-objetivos {
+            background: rgba(245, 230, 196, 0.5);
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            border: 2px solid #4e342e;
+        }
+
+        .contenedor-barra-progreso {
+            position: relative;
+            width: 90%;
+            height: 60px;
+            background: #fff;
+            /* Fondo blanco como en tu foto */
+            border-radius: 30px;
+            margin: 80px auto;
+            /* Espacio para texto arriba y abajo */
+            border: 4px solid #4e342e;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progreso-relleno {
+            height: 100%;
+            width: 10%;
+            /* Empieza en 10% por ejemplo */
+            background: #e6915c;
+            /* Color naranja de la foto */
+            border-radius: 26px;
+            transition: width 0.8s ease-in-out;
+        }
+
+        /* Estaciones / Milestones */
+        .estacion {
+            position: absolute;
+            top: -10px;
+            width: 3px;
+            height: 80px;
+            background-color: #3e2723;
+            z-index: 5;
+        }
+
+        .texto-estacion {
+            position: absolute;
+            width: 150px;
+            left: -75px;
+            font-family: serif;
+            font-size: 0.85rem;
+            color: #3e2723;
+            line-height: 1.2;
+        }
+
+        .texto-arriba {
+            top: -65px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .texto-abajo {
+            bottom: -95px;
+        }
+
         @keyframes aparecer {
             from {
                 opacity: 0;
@@ -468,17 +532,37 @@
             <p style="height: 1000px; padding-top: 30px;"></p>
         </div>
 
-        <div class="contenedor-recaudacion">
-            <h2>META DE CROWDFUNDING</h2>
-            <div class="funding-wrapper" style="font-family: serif;">
-                <div class="funding-bar-bg">
-                    <div id="funding-progress" class="funding-bar-fill" style="width: 10%;"></div>
+        <div class="seccion-objetivos">
+            <h1 style="font-size: 4rem; margin-bottom: 5px;">Objetivos</h1>
+            <p style="font-weight: bold; font-size: 1.5rem; margin-bottom: 20px;">Precio Salida: 9,99€</p>
+
+            <div class="contenedor-barra-progreso">
+                <div id="barra-fill" class="progreso-relleno"></div>
+
+                <div class="estacion" style="left: 40%;">
+                    <div class="texto-estacion texto-arriba">200.000</div>
+                    <div class="texto-estacion texto-abajo">Cifra mínima para el juego, salida en itch.io y Steam</div>
                 </div>
-                <p id="funding-stats">20,000€ de 200,000€ recaudados</p>
+
+                <div class="estacion" style="left: 70%;">
+                    <div class="texto-estacion texto-arriba" style="top: -85px;">350.000 <br> <span
+                            style="font-size: 0.7rem;">Merchandising (peluches, pegatinas...)</span></div>
+                </div>
+
+                <div class="estacion" style="left: 80%;">
+                    <div class="texto-estacion texto-arriba">400.000</div>
+                    <div class="texto-estacion texto-abajo">Álbum del juego y libro de conceptos artísticos</div>
+                </div>
+
+                <div class="estacion" style="left: 100%;">
+                    <div class="texto-estacion texto-arriba">500.000</div>
+                    <div class="texto-estacion texto-abajo">DLCs y salida para consolas</div>
+                </div>
             </div>
-            <br>
-            <button id="btn-donar" class="boton-donar">¡APORTAR MOSCAS! (5,000€)</button>
-            <p style= "font-family: serif;"font-style: italic; font-size: 0.9rem; margin-top: 10px;>Haz clic para simular una donación</p>
+
+            <br><br><br>
+            <p id="contador-dinero" style="font-size: 1.5rem;">Recaudado: <strong>50.000€</strong></p>
+            <button onclick="donarMoscas()" class="boton-magico">¡DONAR MOSCAS! (+15.000€)</button>
         </div>
         <hr color="#4e342e">
 
@@ -561,7 +645,7 @@
             hace responsable del contenido expuesto por el autor.
         </p>
     </footer>
-    
+
     <script>
 
         /* COMENTARIOS */
@@ -584,7 +668,7 @@
         });
 
         /* PERGAMINO FAQ */
-        
+
         const pergaminosFAQ = document.querySelectorAll('.faq-pregunta');
 
         pergaminosFAQ.forEach(pregunta => {
@@ -818,6 +902,30 @@
                 }
             }
         });
+    </script>
+    <script>
+        let dineroActual = 50000;
+        const metaFinal = 500000;
+
+        function donarMoscas() {
+            if (dineroActual < metaFinal) {
+                dineroActual += 15000; // Incremento más grande para llegar a las metas
+                if (dineroActual > metaFinal) dineroActual = metaFinal;
+
+                // Actualizar barra (porcentaje)
+                const porcentaje = (dineroActual / metaFinal) * 100;
+                document.getElementById('barra-fill').style.width = porcentaje + "%";
+
+                // Actualizar texto
+                document.getElementById('contador-dinero').innerHTML = `Recaudado: <strong>${dineroActual.toLocaleString()}€</strong>`;
+
+                // Sonido croac
+                if (typeof sonidoCroac !== 'undefined') {
+                    sonidoCroac.currentTime = 0;
+                    sonidoCroac.play();
+                }
+            }
+        }
     </script>
 
 </body>
