@@ -256,7 +256,7 @@
         }
 
         #pergamino-tipos.abierto {
-            max-height: 800px;
+            max-height: 100%;
             border: 5px solid #4e342e;
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.5);
         }
@@ -269,13 +269,12 @@
         .carrusel-tipos {
             position: relative;
             width: 100%;
-            height: 800px;
+            height: 100%;
             overflow: hidden;
         }
 
         .carrusel-inner-tipos img {
             display: none;
-            margin: 0 auto;
             height: 100%;
             width: 100%;
             border-radius: 10px;
@@ -286,63 +285,7 @@
             animation: aparecer 0.5s ease-in;
         }
 
-        .contenedor-recaudacion {
-            text-align: center;
-            padding: 40px;
-            background: rgba(78, 52, 46, 0.1);
-            border-radius: 15px;
-            margin: 20px 0;
-        }
 
-        .funding-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .funding-bar-bg {
-            width: 100%;
-            height: 35px;
-            background-color: #3e2723;
-            border: 3px solid #4e342e;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
-            margin-bottom: 15px;
-        }
-
-        .funding-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4caf50, #8bc34a);
-            box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
-            transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .boton-donar {
-            background: #4e342e;
-            color: #f5e6c4;
-            padding: 15px 30px;
-            font-family: serif;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border: 2px solid #3e2723;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 0 #2c1c1a;
-        }
-
-        .boton-donar:hover {
-            background: #795548;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #2c1c1a;
-        }
-
-        .boton-donar:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #2c1c1a;
-        }
-
-        /* Contenedor Principal de Objetivos */
         .seccion-objetivos {
             background: rgba(245, 230, 196, 0.5);
             padding: 60px 20px;
@@ -358,10 +301,8 @@
             width: 90%;
             height: 60px;
             background: #fff;
-            /* Fondo blanco como en tu foto */
             border-radius: 30px;
             margin: 80px auto;
-            /* Espacio para texto arriba y abajo */
             border: 4px solid #4e342e;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -369,14 +310,11 @@
         .progreso-relleno {
             height: 100%;
             width: 10%;
-            /* Empieza en 10% por ejemplo */
             background: #e6915c;
-            /* Color naranja de la foto */
             border-radius: 26px;
             transition: width 0.8s ease-in-out;
         }
 
-        /* Estaciones / Milestones */
         .estacion {
             position: absolute;
             top: -10px;
@@ -406,6 +344,31 @@
             bottom: -95px;
         }
 
+        .boton-donar {
+            background: #4e342e;
+            color: #f5e6c4;
+            padding: 15px 30px;
+            font-family: serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid #3e2723;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 #2c1c1a;
+        }
+
+        .boton-donar:hover {
+            background: #795548;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #2c1c1a;
+        }
+
+        .boton-donar:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #2c1c1a;
+        }
+
         @keyframes aparecer {
             from {
                 opacity: 0;
@@ -420,7 +383,9 @@
 
 <body>
 
+
     <header class="tomo-superior">
+
         <nav>
             <a href="#a">
                 <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-NORMAL-GORDO.png?raw=true"
@@ -537,7 +502,7 @@
         </div>
 
         <div class="seccion-objetivos">
-            <h1 style="font-size: 4rem; margin-bottom: 5px;">Objetivos</h1>
+            <h1 id = "e" style="font-size: 4rem; margin-bottom: 5px;">Objetivos</h1>
             <p style="font-weight: bold; font-size: 1.5rem; margin-bottom: 20px;">Precio Salida: 9,99€</p>
 
             <div class="contenedor-barra-progreso">
@@ -565,8 +530,8 @@
             </div>
 
             <br><br><br>
-            <p id="contador-dinero" style="font-size: 1.5rem;">Recaudado: <strong>50.000€</strong></p>
-            <button onclick="donarMoscas()" class="boton-magico">¡DONAR MOSCAS! (+15.000€)</button>
+            <p id="contador-dinero" style="font-size: 1.5rem;">Recaudado: <strong>50.000€</strong></p><br>
+            <button onclick="donarMoscas()" class="boton-donar">¡DONAR MOSCAS! (+15.000€)</button>
         </div>
         <hr color="#4e342e">
 
@@ -876,54 +841,21 @@
             });
         });
 
-        /* CROWFUNDING */
+        /* OBJETIVOS */
 
-        let recaudado = 20000;
-        const meta = 200000;
-        const incremento = 5000;
-
-        const btnDonar = document.getElementById('btn-donar');
-        const barraProgreso = document.getElementById('funding-progress');
-        const textoStats = document.getElementById('funding-stats');
-
-        btnDonar.addEventListener('click', () => {
-            if (recaudado < meta) {
-                recaudado += incremento;
-
-                const porcentaje = (recaudado / meta) * 100;
-                barraProgreso.style.width = porcentaje + "%";
-                textoStats.innerHTML = `<strong>${recaudado.toLocaleString()}€</strong> de <strong>${meta.toLocaleString()}€</strong> recaudados`;
-
-                if (typeof sonidoCroac !== 'undefined') {
-                    sonidoCroac.currentTime = 0;
-                    sonidoCroac.play();
-                }
-
-                if (recaudado >= meta) {
-                    btnDonar.textContent = "¡META ALCANZADA! GRACIAS";
-                    btnDonar.style.background = "#4caf50";
-                    confettiEfecto(); // Por si quieres añadir algo extra luego
-                }
-            }
-        });
-    </script>
-    <script>
         let dineroActual = 50000;
         const metaFinal = 500000;
 
         function donarMoscas() {
             if (dineroActual < metaFinal) {
-                dineroActual += 15000; // Incremento más grande para llegar a las metas
+                dineroActual += 15000;
                 if (dineroActual > metaFinal) dineroActual = metaFinal;
 
-                // Actualizar barra (porcentaje)
                 const porcentaje = (dineroActual / metaFinal) * 100;
                 document.getElementById('barra-fill').style.width = porcentaje + "%";
 
-                // Actualizar texto
                 document.getElementById('contador-dinero').innerHTML = `Recaudado: <strong>${dineroActual.toLocaleString()}€</strong>`;
 
-                // Sonido croac
                 if (typeof sonidoCroac !== 'undefined') {
                     sonidoCroac.currentTime = 0;
                     sonidoCroac.play();
