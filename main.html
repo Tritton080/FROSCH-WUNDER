@@ -863,7 +863,7 @@
 
         let intervaloCarruselTipos;
 
-        const sonidoCroac = new Audio('croac.mp3');
+        const sonidoCroac = new Audio('audio/croac.mp3');
         sonidoCroac.volume = 0.6;
         sonidoCroac.preload = 'auto';
 
@@ -906,12 +906,10 @@
             });
         });
 
-    </script>
-    <script>
+        /* RECUADACION */ 
         let dineroActual = 50000;
         const metaFinal = 500000;
 
-        // Lista de objetivos para el "confeti"
         const hitos = [
             { valor: 200000, mensaje: "Conseguido salida en Steam", alcanzado: false },
             { valor: 300000, mensaje: "¡hito logrado: merchandising!", alcanzado: false },
@@ -920,27 +918,21 @@
         ];
 
         function donarMoscas() {
-            // 1. El dinero sube SIEMPRE (sin tope)
             dineroActual += 15000;
 
-            // 2. La barra se queda en el 100% máximo
             let porcentaje = (dineroActual / metaFinal) * 100;
             if (porcentaje > 100) porcentaje = 100;
 
-            // 3. Actualizar visualmente
             const barra = document.getElementById('barra-fill');
             barra.style.width = porcentaje + "%";
 
             const anchoTotal = document.querySelector('.contenedor-barra-progreso').offsetWidth;
             barra.style.backgroundSize = anchoTotal + "px 100%";
 
-            // 4. Actualizar el contador (formateado con puntos)
             document.getElementById('contador-dinero').innerHTML = `Recaudado: <strong>${dineroActual.toLocaleString()}€</strong>`;
 
-            // 5. Comprobar si hemos pasado algún hito
             comprobarHitos();
 
-            // Sonido
             if (typeof sonidoCroac !== 'undefined') {
                 sonidoCroac.currentTime = 0;
                 sonidoCroac.play();
@@ -961,7 +953,6 @@
             div.innerText = msg;
             div.classList.add('show');
 
-            // Lo quitamos a los 4 segundos
             setTimeout(() => {
                 div.classList.remove('show');
             }, 4000);
