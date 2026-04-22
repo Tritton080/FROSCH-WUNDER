@@ -599,18 +599,24 @@
                         Descripción
                         del tipo</p>
 
-                    <div class="carrusel-tipos">
-                        <div class="carrusel-inner-tipos" id="carrusel-imagenes-tipos">
+                    <div class="carrusel-tipos"
+                        style="display: flex; align-items: center; justify-content: center; position: relative;">
+
+                        <span class="flecha-simple" onclick="cambiarTipo(-1)">&#10094;</span>
+
+                        <div id="carrusel-imagenes-tipos">
                         </div>
-                        <div class="carrusel-indicadores" id="indicadores-tipos">
-                        </div>
+
+                        <span class="flecha-simple" onclick="cambiarTipo(1)">&#10095;</span>
+
                     </div>
                 </div>
             </div>
+        </div>
 
-            <br><br>
-            <hr color="#4e342e">
-            <p style="height: 50px; padding-top: 30px;"></p>
+        <br><br>
+        <hr color="#4e342e">
+        <p style="height: 50px; padding-top: 30px;"></p>
         </div>
 
         <div>
@@ -889,7 +895,7 @@
             },
             "Electrico": {
                 titulo: "Electrico",
-                desc: "Rana dorada. Se boostean potencialmente si hay mas sapos electricos",
+                desc: "Rana dorada. Son sapos bastante grupales y creen en la decisión consensuada, se llevan bien con los sapos de roca. Se boostean potencialmente si hay mas sapos electricos",
                 imagenes: [
                     "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-ELECTRICO.png?raw=true",
                     "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-ELECTRICO.png?raw=true",
@@ -900,7 +906,7 @@
             },
             "Aire": {
                 titulo: "Aire",
-                desc: "Rana voladora. Puede hacer que los enemigos pierdan un turno",
+                desc: "Rana voladora. Son mas bien escurridizos y pocas veces se dejan ver. De pocas palabras y menos amistades, no se les dan muy bien la socialización con otros sapos. Puede hacer que los enemigos pierdan un turno",
                 imagenes: [
                     "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-GORDO-AIRE.png?raw=true",
                     "https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/SAPO-FUERTE-AIRE.png?raw=true",
