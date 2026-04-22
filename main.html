@@ -516,6 +516,37 @@
         .carrusel-indicadores .punto.active {
             background-color: rgba(255, 255, 255, 1);
         }
+
+        .carrusel-flecha {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            border-radius: 0 5px 5px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            z-index: 15;
+        }
+
+        .carrusel-flecha.next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .carrusel-flecha.prev {
+            left: 0;
+        }
+
+        .carrusel-flecha:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
     </style>
 </head>
 
@@ -602,6 +633,10 @@
                     <div class="carrusel-tipos">
                         <div class="carrusel-inner-tipos" id="carrusel-imagenes-tipos">
                         </div>
+
+                        <button class="carrusel-flecha prev" id="flecha-prev">&#10094;</button>
+                        <button class="carrusel-flecha next" id="flecha-next">&#10095;</button>
+
                         <div class="carrusel-indicadores" id="indicadores-tipos">
                         </div>
                     </div>
@@ -998,6 +1033,23 @@
                                 actualizarVista(siguienteIndice);
                             }, 3000);
                         }
+                    };
+
+                    const btnPrev = document.getElementById('flecha-prev');
+                    const btnNext = document.getElementById('flecha-next');
+
+                    btnPrev.onclick = () => {
+                        clearInterval(intervaloCarruselTipos);
+                        let nuevoIndice = (indiceTipos - 1 + infoSapo.imagenes.length) % infoSapo.imagenes.length;
+                        actualizarVista(nuevoIndice);
+                        iniciarIntervalo();
+                    };
+
+                    btnNext.onclick = () => {
+                        clearInterval(intervaloCarruselTipos);
+                        let nuevoIndice = (indiceTipos + 1) % infoSapo.imagenes.length;
+                        actualizarVista(nuevoIndice);
+                        iniciarIntervalo();
                     };
 
                     iniciarIntervalo();
