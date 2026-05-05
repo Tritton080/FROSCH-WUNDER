@@ -7,6 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <style>
+        /*---------------------------
+          FUENTES Y ESTILOS GENERALES
+          ---------------------------*/
+
         html {
             scroll-behavior: smooth;
         }
@@ -30,6 +34,37 @@
             color: #3e2723;
             cursor: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/Cursor.png?raw=true'), auto;
         }
+
+        h1 {
+            font-family: 'fuentepropia', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 25px;
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            font-family: 'fuentepropia', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            scroll-margin-top: 100px;
+        }
+
+        audio {
+            display: block;
+            margin: 0 auto;
+            filter: sepia(100%) saturate(100%) hue-rotate(10deg) brightness(100%) contrast(130%);
+        }
+
+        video {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /*---------------------------
+            CABECERA Y NAVEGACIÓN
+        ---------------------------*/
 
         .tomo-superior {
             position: fixed;
@@ -74,6 +109,26 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        .logo-container {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .logo-animado {
+            width: 150px;
+            height: 150px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: froschAnim 0.8s infinite steps(1);
+        }
+
+        /*---------------------------
+             ESTRUCTURA PRINCIPAL
+        ---------------------------*/
+
         .cuerpo-pergamino {
             background-color: #f5e6c4;
             width: 100%;
@@ -90,21 +145,9 @@
             font-size: 1rem;
         }
 
-        h1 {
-            font-family: 'fuentepropia', serif;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 25px;
-            scroll-margin-top: 100px;
-        }
-
-        h2 {
-            font-family: 'fuentepropia', serif;
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            scroll-margin-top: 100px;
-        }
+        /*---------------------------
+             SECCION COMENTARIOS
+        ---------------------------*/
 
         form {
             font-family: serif;
@@ -118,23 +161,9 @@
             text-align: left;
         }
 
-        .tomo-inferior {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(to bottom, #4e342e, #795548, #4e342e);
-            align-items: top;
-            justify-content: center;
-            border-top: 3px solid #3e2723;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .tomo-inferior p {
-            text-align: center;
-            color: #f5e6c4;
-            margin: 0;
-            font-size: 0.75rem;
-            font-family: serif;
-        }
+        /*---------------------------
+                 SECCION FAQ
+        ---------------------------*/
 
         .contenedor-faq {
             display: flex;
@@ -204,16 +233,31 @@
             max-width: 500px;
         }
 
-        audio {
-            display: block;
-            margin: 0 auto;
-            filter: sepia(100%) saturate(100%) hue-rotate(10deg) brightness(100%) contrast(130%);
+        /*---------------------------
+                   FOOTER
+        ---------------------------*/
+
+        .tomo-inferior {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, #4e342e, #795548, #4e342e);
+            align-items: top;
+            justify-content: center;
+            border-top: 3px solid #3e2723;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
         }
 
-        video {
-            display: block;
-            margin: 0 auto;
+        .tomo-inferior p {
+            text-align: center;
+            color: #f5e6c4;
+            margin: 0;
+            font-size: 0.75rem;
+            font-family: serif;
         }
+
+        /*--------------------------------
+         SECCION TIPOS DE SAPOS Y CARRUSEL
+        ----------------------------------*/
 
         .contenedor-simbolos {
             display: flex;
@@ -286,6 +330,63 @@
             animation: aparecer 0.5s ease-in;
         }
 
+        .carrusel-indicadores {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .carrusel-indicadores .punto {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carrusel-indicadores .punto.active {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .carrusel-flecha {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            border-radius: 0 5px 5px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            z-index: 15;
+        }
+
+        .carrusel-flecha.next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .carrusel-flecha.prev {
+            left: 0;
+        }
+
+        .carrusel-flecha:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /*-----------------------------
+         SECCION OBJETIVOS Y DONACIONES
+        -------------------------------*/
 
         .seccion-objetivos {
             background: rgba(245, 230, 196, 0.5);
@@ -417,6 +518,10 @@
             transform: translateX(-50%) translateY(20px);
         }
 
+        /*---------------------------
+                 ANIMACIONES
+         ---------------------------*/
+
         @keyframes aparecer {
             from {
                 opacity: 0;
@@ -425,23 +530,6 @@
             to {
                 opacity: 1;
             }
-        }
-
-
-        .logo-container {
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            vertical-align: middle;
-            overflow: hidden;
-        }
-
-        .logo-animado {
-            width: 150px;
-            height: 150px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: froschAnim 0.8s infinite steps(1);
         }
 
         @keyframes froschAnim {
@@ -494,59 +582,6 @@
             }
         }
 
-        .carrusel-indicadores {
-            position: absolute;
-            bottom: 0px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 10;
-        }
-
-        .carrusel-indicadores .punto {
-            width: 12px;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .carrusel-indicadores .punto.active {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        .carrusel-flecha {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            padding: 15px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: background-color 0.3s ease;
-            border-radius: 0 5px 5px 0;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: none;
-            z-index: 15;
-        }
-
-        .carrusel-flecha.next {
-            right: 0;
-            border-radius: 5px 0 0 5px;
-        }
-
-        .carrusel-flecha.prev {
-            left: 0;
-        }
-
-        .carrusel-flecha:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
     </style>
 </head>
 
@@ -648,8 +683,14 @@
             </div>
 
             <br><br>
-            <hr color="#4e342e">
             <p style="height: 50px; padding-top: 30px;"></p>
+        </div>
+
+        <div>
+            <h2>MAPA</h2>
+            <br>
+            <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/tipos/SAPO.png?raw=true" alt="Imagen centrada" style="display: block; margin: 0 auto;"S>
+            <br><br>
         </div>
 
         <div>
@@ -796,7 +837,9 @@
 
     <script>
 
-        /* COMENTARIOS */
+        /*---------------------------
+                 COMENTARIOS
+        ---------------------------*/
 
         const form = document.getElementById('form-comentario');
         const lista = document.getElementById('lista-comentarios');
@@ -815,7 +858,9 @@
 
         });
 
-        /* PERGAMINO FAQ */
+        /*---------------------------
+               PERGAMINO FAQ
+        ---------------------------*/
 
         const pergaminosFAQ = document.querySelectorAll('.faq-pregunta');
 
@@ -826,7 +871,10 @@
             });
         });
 
-        /* TABLA DE TIPOS */
+        /*---------------------------
+               TABLA DE TIPOS
+        ---------------------------*/
+
         const indicadoresTipos = document.getElementById('indicadores-tipos');
 
         const baseDatosSapos = {
@@ -1087,15 +1135,18 @@
             });
         });
 
-        /* RECUADACION */
+        /*---------------------------
+                RECUADACION 
+        ---------------------------*/
+
         let dineroActual = 50000;
         const metaFinal = 500000;
 
         const hitos = [
             { valor: 200000, mensaje: "Conseguido salida en Steam", alcanzado: false },
-            { valor: 300000, mensaje: "¡hito logrado: merchandising!", alcanzado: false },
-            { valor: 400000, mensaje: "¡hito logrado: libro de Arte!", alcanzado: false },
-            { valor: 500000, mensaje: "¡salida en consolas!", alcanzado: false }
+            { valor: 300000, mensaje: "¡Hito logrado: merchandising!", alcanzado: false },
+            { valor: 400000, mensaje: "¡Hito logrado: libro de Arte!", alcanzado: false },
+            { valor: 500000, mensaje: "¡Salida en consolas!", alcanzado: false }
         ];
 
         function donarMoscas() {
@@ -1128,10 +1179,12 @@
                 }
             });
         }
-        // --- CRÉDITOS ---
-        // La función de confeti utiliza 'canvas-confetti' por Kiril Vatev.
-        // Licencia ISC | https://github.com/catdad/canvas-confetti
-        // ----------------
+
+        /* --- CRÉDITOS ---
+         La función de confeti utiliza 'canvas-confetti' por Kiril Vatev.
+         Licencia ISC | https://github.com/catdad/canvas-confetti
+        ---------------- */ 
+
         function mostrarCelebracion(msg) {
             const div = document.getElementById('notificacion');
             div.innerText = msg;
