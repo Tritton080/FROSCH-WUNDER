@@ -51,12 +51,6 @@
             scroll-margin-top: 100px;
         }
 
-        audio {
-            display: block;
-            margin: 0 auto;
-            filter: sepia(100%) saturate(100%) hue-rotate(10deg) brightness(100%) contrast(130%);
-        }
-
         video {
             display: block;
             margin: 0 auto;
@@ -645,7 +639,7 @@
         }
 
         .pegatina-wrapper.despegada .pegatina-imagen {
-            transform: rotateZ(90deg) rotateX(10deg) rotateY(-90deg);
+            transform: rotateZ(40deg) rotateX(45deg) rotateY(-120deg);
             box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
         }
 
@@ -655,6 +649,132 @@
             gap: 30px;
             flex-wrap: wrap;
             padding: 20px;
+        }
+
+        /*---------------------------
+            AUDIO PERSONALIZADO
+         ---------------------------*/
+
+        .reproductor-fantasia {
+            background: rgba(101, 67, 33, 0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid #5d4037;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .control-magico {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .control-magico:hover {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        .contenedor-barra {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .emoji-sapo {
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+
+        #barra-progreso {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 200px;
+            height: 12px;
+            background: #ff80ab;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            border: 2px solid #d81b60;
+            margin-left: -5px;
+        }
+
+        #barra-progreso::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #ff4081;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.8);
+        }
+
+        /*---------------------------
+              TITULO ANIMADO
+         ---------------------------*/
+        .intro-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background: transparent;
+        }
+
+        .escritura-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        #titulo-juego {
+            font-size: 3rem;
+            color: #3e2723;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            border-right: 2px solid transparent;
+        }
+
+        #pluma {
+            position: absolute;
+            top: -50px;
+            /* Ajusta para que la punta de la pluma toque la letra */
+            left: 0;
+            font-size: 3rem;
+            pointer-events: none;
+            display: none;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes escribir {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes plumazo {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-10deg) translateY(-2px);
+            }
+
+            75% {
+                transform: rotate(10deg) translateY(2px);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
         }
     </style>
 </head>
@@ -677,10 +797,14 @@
     </header>
 
     <main class="cuerpo-pergamino">
+        <div class="intro-container">
+                <div class="escritura-wrapper">
+                    <h1 id="titulo-juego">FROSCH  WUNDER</h1>
+                    <div id="pluma">✒️</div>
+                </div>
+            </div>
+
         <div>
-            <h1 id="a">
-                FROSCH<br>WUNDER
-            </h1>
             <p style="font-size: 1.5rem;"> Cria &ensp;moscas &ensp;y &ensp;te &ensp;sacaran &ensp;la &ensp;lengua</p>
             <br><br>
         </div>
@@ -885,11 +1009,20 @@
                 <hr color="#4e342e">
                 <p style="height: 10px; padding-top: 30px;"></p>
                 <h2>Cancion</h2><br>
-                <audio controls>
-                    <source src="audio/cancioncita.mp3" type="audio/mpeg">
-                </audio>
+                <div class="reproductor-fantasia">
+                    <audio id="musica-magica" src="audio/cancioncita.mp3"></audio>
+
+                    <button id="boton-play" class="control-magico">▶️</button>
+
+                    <div class="contenedor-barra">
+                        <span class="emoji-sapo">🐸</span>
+                        <input type="range" id="barra-progreso" value="0" step="1" min="0">
+                    </div>
+                </div>
                 <br>
                 <hr color="#4e342e">
+
+
 
                 <p style="height: 10px; padding-top: 30px;"></p>
                 <h2>Video</h2><br>
@@ -1395,6 +1528,60 @@
                 pegatina.classList.toggle('despegada');
             });
         });
+
+        /*---------------------------
+            AUDIO PERSONALIZADO 
+        ---------------------------*/
+        const audio = document.getElementById('musica-magica');
+        const botonPlay = document.getElementById('boton-play');
+        const barra = document.getElementById('barra-progreso');
+
+        botonPlay.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                botonPlay.innerText = '✨';
+            } else {
+                audio.pause();
+                botonPlay.innerText = '▶️';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const porcentaje = (audio.currentTime / audio.duration) * 100;
+            barra.value = porcentaje || 0;
+        });
+
+        barra.addEventListener('input', () => {
+            const tiempoNuevo = (barra.value * audio.duration) / 100;
+            audio.currentTime = tiempoNuevo;
+        });
+
+        /*---------------------------
+            TITULO ANIMADO 
+        ---------------------------*/
+
+        window.addEventListener('load', () => {
+            const titulo = document.getElementById('titulo-juego');
+            const pluma = document.getElementById('pluma');
+            const duracion = 5;
+
+            pluma.style.display = 'block';
+            titulo.style.animation = `escribir ${duracion}s steps(30) forwards`;
+            pluma.style.transition = `left ${duracion}s linear`;
+            pluma.style.animation = `plumazo 0.2s infinite`;
+
+            setTimeout(() => {
+                pluma.style.left = '100%';
+            }, 10);
+
+            setTimeout(() => {
+                pluma.style.transition = 'opacity 1s, transform 1s';
+                pluma.style.opacity = '0';
+                pluma.style.transform = 'translateY(-50px) rotate(45deg)';
+                pluma.style.animation = 'none';
+            }, duracion * 1000);
+        });
+
     </script>
 
 </body>
