@@ -582,6 +582,72 @@
                 background-image: url('https://github.com/Tritton080/FROSCH-WUNDER/blob/main/logo/12%C2%BA.png?raw=true');
             }
         }
+
+        /*---------------------------
+                 PEGATINAS
+         ---------------------------*/
+        .pegatina-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 20px;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .pegatina-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8f9fa;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .pegatina-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .pegatina-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .pegatina-imagen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+            transform-origin: top left;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+        }
+
+        .pegatina-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pegatina-wrapper.despegada .pegatina-imagen {
+            transform: rotateZ(90deg) rotateX(10deg) rotateY(-90deg);
+            box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 
@@ -607,7 +673,7 @@
             <h1 id="a">
                 FROSCH<br>WUNDER
             </h1>
-            <p style = "font-size: 1.5rem;"> Cria &ensp;moscas &ensp;y &ensp;te &ensp;sacaran &ensp;la &ensp;lengua</p>
+            <p style="font-size: 1.5rem;"> Cria &ensp;moscas &ensp;y &ensp;te &ensp;sacaran &ensp;la &ensp;lengua</p>
             <br><br>
         </div>
         <div>
@@ -622,7 +688,8 @@
                 Acompaña a Ricardo, una joven rana que en su deseo de convertirse en el más excelso mago de la época
                 completando la prueba definitiva,
                 sufre una invasión de los depredadores de esta especie, devastando la fortaleza imperial. </p><br>
-            <p style="font-family:serif ;font-size: 1.35rem;"> En Frosch Wunder, controlarás a Ricardo, que se enfrentara
+            <p style="font-family:serif ;font-size: 1.35rem;"> En Frosch Wunder, controlarás a Ricardo, que se
+                enfrentara
                 a Anacardo, contra el que lucharás para
                 tratar de recuperar la aldea, creando diversas estrategias para derrotar a los enemigos y dominando
                 nuevos hechizos durante el progreso de la aventura.
@@ -647,6 +714,35 @@
                 <hr color="#4e342e">
                 <br><br>
             </div>
+            
+            <div class="pegatina-wrapper">
+
+                <div class="pegatina-info">
+                    <h3>Nombre</h3>
+                    <p>Descripción</p>
+                </div>
+
+                <div class="pegatina-imagen">
+                    <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/LogoJuego.png?raw=true"
+                        alt="Foto pegatina">
+                </div>
+
+            </div>
+
+            <div class="pegatina-wrapper">
+
+                <div class="pegatina-info">
+                    <h3>Nombre</h3>
+                    <p>Descripción</p>
+                </div>
+
+                <div class="pegatina-imagen">
+                    <img src="https://github.com/Tritton080/FROSCH-WUNDER/blob/main/img/LogoJuego.png?raw=true"
+                        alt="Foto pegatina">
+                </div>
+
+            </div>
+            
             <div>
                 <div>
                     <h2>Equipo</h2>
@@ -1242,6 +1338,15 @@
             confetti();
         }
 
+        /*---------------------------
+                PEGATINAS 
+        ---------------------------*/
+        const pegatinas = document.querySelectorAll('.pegatina-wrapper');
+        pegatinas.forEach(pegatina => {
+            pegatina.addEventListener('click', () => {
+                pegatina.classList.toggle('despegada');
+            });
+        });
     </script>
 
 </body>
