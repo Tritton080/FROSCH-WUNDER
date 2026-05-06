@@ -741,7 +741,6 @@
         #pluma {
             position: absolute;
             top: -50px;
-            /* Ajusta para que la punta de la pluma toque la letra */
             left: 0;
             font-size: 3rem;
             pointer-events: none;
@@ -776,6 +775,36 @@
                 transform: rotate(0deg);
             }
         }
+
+        /*---------------------------
+                MOSCAS
+         ---------------------------*/
+        .mosca-contenedor {
+            position: fixed;
+            font-size: 40px;
+            cursor: crosshair;
+            user-select: none;
+            z-index: 9999;
+        }
+
+        @keyframes aleteo {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-4px) rotate(15deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(-15deg);
+            }
+        }
+
+        .mosca-dibujo {
+            display: inline-block;
+            animation: aleteo 0.1s infinite;
+        }
     </style>
 </head>
 
@@ -798,11 +827,11 @@
 
     <main class="cuerpo-pergamino">
         <div class="intro-container">
-                <div class="escritura-wrapper">
-                    <h1 id="titulo-juego">FROSCH  WUNDER</h1>
-                    <div id="pluma">✒️</div>
-                </div>
+            <div class="escritura-wrapper">
+                <h1 id="titulo-juego">FROSCH WUNDER</h1>
+                <div id="pluma">✒️</div>
             </div>
+        </div>
 
         <div>
             <p style="font-size: 1.5rem;"> Cria &ensp;moscas &ensp;y &ensp;te &ensp;sacaran &ensp;la &ensp;lengua</p>
@@ -1582,6 +1611,89 @@
             }, duracion * 1000);
         });
 
+        /*---------------------------
+                MOSCAS
+        ---------------------------*/
+        function crearMosca() {
+            const moscaContainer = document.createElement('div');
+            moscaContainer.className = 'mosca-contenedor';
+
+            const moscaDibujo = document.createElement('div');
+            moscaDibujo.className = 'mosca-dibujo';
+            moscaDibujo.innerText = '🦟';
+
+            moscaContainer.appendChild(moscaDibujo);
+            const saleDeIzquierda = Math.random() > 0.5;
+            const alturaInicio = Math.random() * (window.innerHeight - 50);
+            const alturaFin = Math.random() * (window.innerHeight - 50);
+
+            moscaContainer.style.top = `${alturaInicio}px`;
+
+            if (saleDeIzquierda) {
+                moscaContainer.style.left = '-50px';
+                moscaDibujo.style.transform = 'scaleX(-1)';
+            } else {
+                moscaContainer.style.right = '-50px';
+            }
+
+            document.body.appendChild(moscaContainer);
+
+            setTimeout(() => {
+                const tiempoVuelo = 4000 + Math.random() * 4000;
+
+                moscaContainer.style.transition = `all ${tiempoVuelo}ms linear`;
+                moscaContainer.style.top = `${alturaFin}px`;
+
+                if (saleDeIzquierda) {
+                    moscaContainer.style.left = `${window.innerWidth + 50}px`;
+                } else {
+                    moscaContainer.style.right = `${window.innerWidth + 50}px`;
+                }
+
+                setTimeout(() => {
+                    if (moscaContainer.parentElement) {
+                        moscaContainer.remove();
+                    }
+                }, tiempoVuelo);
+
+            }, 50);
+
+            moscaContainer.addEventListener('mousedown', function () {
+                if (typeof sonidoCroac !== 'undefined') {
+                    sonidoCroac.currentTime = 0;
+                    sonidoCroac.play();
+                }
+                moscaDibujo.innerText = '💥';
+                moscaDibujo.style.animation = 'none';
+
+                const rect = moscaContainer.getBoundingClientRect();
+                moscaContainer.style.transition = 'none';
+                moscaContainer.style.left = `${rect.left}px`;
+                moscaContainer.style.top = `${rect.top}px`;
+
+                setTimeout(() => {
+                    moscaContainer.style.transition = 'top 1s ease-in, opacity 1s';
+                    moscaContainer.style.top = `${window.innerHeight + 50}px`;
+                    moscaContainer.style.opacity = '0';
+
+                    setTimeout(() => {
+                        if (moscaContainer.parentElement) moscaContainer.remove();
+                    }, 1000);
+                }, 100);
+            });
+        }
+
+        function cicloDeMoscas() {
+            const tiempoMinimo = 5000;
+            const tiempoMaximo = 10000;
+            const tiempoEspera = tiempoMinimo + Math.random() * (tiempoMaximo - tiempoMinimo);
+
+            setTimeout(() => {
+                crearMosca();
+                cicloDeMoscas();
+            }, tiempoEspera);
+        }
+        cicloDeMoscas();
     </script>
 
 </body>
