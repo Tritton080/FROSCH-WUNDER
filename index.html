@@ -143,16 +143,31 @@
              SECCION COMENTARIOS
         ---------------------------*/
 
-        form {
-            font-family: serif;
-            font-size: 1rem;
-            text-align: left;
-        }
-
+        #form-comentario,
         .comentarios {
             font-family: serif;
             font-size: 1rem;
             text-align: left;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .sistema-estrellas {
+            display: flex;
+            gap: 6px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin: 5px 0 15px 0;
+            user-select: none;
+        }
+
+        .estrella-voto {
+            color: #ffb300;
+            transition: transform 0.1s ease, color 0.2s ease;
+        }
+
+        .estrella-voto:hover {
+            transform: scale(1.2);
         }
 
         /*---------------------------
@@ -163,7 +178,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            align-items: left;
+            align-items: center;
             width: 100%;
             font-family: serif;
         }
@@ -174,6 +189,7 @@
             max-width: 900px;
             cursor: pointer;
             transition: all 0.4s ease;
+            height: 110px;
         }
 
         .faq-pregunta,
@@ -185,11 +201,14 @@
             color: #000000;
             display: flex;
             align-items: center;
-            padding: 5px 5px;
-            min-height: 40px;
+            padding: 10px 15px;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .faq-pregunta {
+            width: 350px;
+            flex-shrink: 0;
             border-left: 15px solid #4e342e;
             border-right: 8px solid #4e342e;
             border-radius: 5px;
@@ -215,12 +234,14 @@
 
         .faq-respuesta-contenido {
             width: 450px;
+            flex-shrink: 0;
             border-right: 15px solid #4e342e;
             border-radius: 0 5px 5px 0;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
             font-style: italic;
             font-weight: bold;
             border-left: 1px solid rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
 
         .faq-item.abierto .faq-respuesta {
@@ -1107,7 +1128,7 @@
 
                 <div class="contenedor-faq">
                     <div class="faq-item">
-                        <div class="faq-pregunta">¿Cuándo será el lanzamiento?</div>
+                        <div class="faq-pregunta">Pregunta 1:¿Cuándo será el lanzamiento?</div>
                         <div class="faq-respuesta">
                             <div class="faq-respuesta-contenido">Si conseguimos recaudar lo necesario estará disponible
                                 en
@@ -1157,19 +1178,31 @@
 
                 <label>Comentario:</label><br>
                 <textarea id="texto-comentario" rows="4" cols="50" required></textarea><br><br>
+
+                <label>Puntuación:</label><br>
+                <div class="sistema-estrellas" id="selector-estrellas">
+                    <span class="estrella-voto" data-valor="1">★</span>
+                    <span class="estrella-voto" data-valor="2">★</span>
+                    <span class="estrella-voto" data-valor="3">★</span>
+                    <span class="estrella-voto" data-valor="4">★</span>
+                    <span class="estrella-voto" data-valor="5">★</span>
+                </div>
+                <input type="hidden" id="puntuacion" value="5">
+
                 <button type="submit">Enviar</button>
             </form>
+
             <br>
 
             <div class="comentarios" id="lista-comentarios">
                 <h3>Comentarios:</h3>
-                <p><strong>FelipeMaster:</strong> ¡Me encanta el arte del juego! - <em> 30/01/26 </em></p>
+                <p><strong>FelipeMaster:</strong> ⭐⭐⭐⭐⭐<br>¡Me encanta el arte del juego! - <em> 30/01/26 </em></p>
                 <hr>
-                <p><strong>Julian Martinez:</strong> ¿Para cuándo la beta? - <em> 13/02/26 </em></p>
+                <p><strong>Julian Martinez:</strong> ⭐⭐⭐⭐<br>¿Para cuándo la beta? - <em> 13/02/26 </em></p>
                 <hr>
-                <p><strong>Chop334:</strong> cuanto va a costar el juego? - <em> 06/04/26 </em></p>
+                <p><strong>Chop334:</strong> ⭐⭐⭐⭐<br>cuanto va a costar el juego? - <em> 06/04/26 </em></p>
                 <hr>
-                <p><strong>GuilleProxx:</strong> ¡Muy guapo el juego! - <em> 03/05/26 </em></p>
+                <p><strong>GuilleProxx:</strong> ⭐⭐⭐⭐⭐<br>¡Muy guapo el juego! - <em> 03/05/26 </em></p>
                 <hr>
             </div>
 
@@ -1192,6 +1225,24 @@
                  COMENTARIOS
         ---------------------------*/
 
+        const estrellasVoto = document.querySelectorAll('.estrella-voto');
+        const inputPuntuacion = document.getElementById('puntuacion');
+
+        estrellasVoto.forEach(estrella => {
+            estrella.addEventListener('click', function () {
+                const valorSeleccionado = parseInt(this.getAttribute('data-valor'));
+                inputPuntuacion.value = valorSeleccionado;
+                estrellasVoto.forEach(e => {
+                    const valorEstrella = parseInt(e.getAttribute('data-valor'));
+                    if (valorEstrella <= valorSeleccionado) {
+                        e.style.color = '#ffb300';
+                    } else {
+                        e.style.color = '#ccc';
+                    }
+                });
+            });
+        });
+
         const form = document.getElementById('form-comentario');
         const lista = document.getElementById('lista-comentarios');
 
@@ -1199,14 +1250,21 @@
             e.preventDefault();
             const autor = document.getElementById('autor').value;
             const texto = document.getElementById('texto-comentario').value;
+            const puntuacion = document.getElementById('puntuacion').value;
             const fecha = new Date().toLocaleDateString('es-ES');
+
+            const estrellasHtml = '⭐'.repeat(puntuacion);
+
             const nuevoComentario = document.createElement('div');
             nuevoComentario.innerHTML = `
-            <p><strong>${autor}:</strong> ${texto} - <em>${fecha}</em></p>
-            <hr>
-        `;
-            lista.insertBefore(nuevoComentario, lista.querySelector('h3').nextSibling);
+    <p><strong>${autor}:</strong> ${estrellasHtml}<br>${texto} - <em>${fecha}</em></p>
+    <hr>
+  `;
 
+            lista.insertBefore(nuevoComentario, lista.querySelector('h3').nextSibling);
+            form.reset();
+            inputPuntuacion.value = "5";
+            estrellasVoto.forEach(e => e.style.color = '#ffb300');
         });
 
         /*---------------------------
@@ -1684,8 +1742,8 @@
         }
 
         function cicloDeMoscas() {
-            const tiempoMinimo = 5000;
-            const tiempoMaximo = 10000;
+            const tiempoMinimo = 10000;
+            const tiempoMaximo = 20000;
             const tiempoEspera = tiempoMinimo + Math.random() * (tiempoMaximo - tiempoMinimo);
 
             setTimeout(() => {
