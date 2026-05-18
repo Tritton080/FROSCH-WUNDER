@@ -534,6 +534,56 @@
             transform: translateX(-50%) translateY(20px);
         }
 
+        /*-----------------------------
+            SECCION CONTRIBUCIONES
+        -------------------------------*/
+        .seccion-contribuciones {
+            padding: 60px 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid-contribuciones {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        .tarjeta-contribucion {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid #3e2723;
+            border-radius: 15px;
+            padding: 30px 20px;
+            width: 260px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #040000;
+        }
+
+        .tarjeta-contribucion:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tarjeta-contribucion h3 {
+            font-family: 'fuentepropia', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #012911;
+        }
+
+        .tarjeta-contribucion p {
+            font-family: 'fuentepropia', serif;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
         /*---------------------------
                  ANIMACIONES
          ---------------------------*/
@@ -1121,6 +1171,63 @@
                 <button onclick="donarMoscas()" class="boton-donar">¡DONAR MOSCAS! (+15.000€)</button>
             </div>
             <hr color="#4e342e">
+
+            <section id="contribuciones" class="seccion-contribuciones">
+                <h2>Contribuciones</h2>
+
+                <div class="grid-contribuciones">
+
+                    <div class="tarjeta-contribucion">
+                        <h3>Donacion 5€</h3>
+                        <p>Rol "Sapo" en Discord</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Agradecimiento en los creditos</p>
+                    </div>
+
+                    <div class="tarjeta-contribucion">
+                        <h3>Donacion 25€</h3>
+                        <p>Rol "Sapo Alquimista" en Discord</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Agradecimiento en los creditos</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Peluche sapo sapo de tipo a elegir</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Set de pegatinas basicas</p>
+                    </div>
+
+                    <div class="tarjeta-contribucion">
+                        <h3>Donacion 50€</h3>
+                        <p>Rol "Sapo Mágico" en Discord</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Agradecimiento en los creditos</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Peluche sapo sapo de tipo a elegir</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Set de pegatinas medium</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Prueba de una demo de 2h</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Acceso anticipado de una semana</p>
+
+                    </div>
+
+                    <div class="tarjeta-contribucion">
+                        <h3>Donacion 100€</h3>
+                        <p>Rol "Sapo Master" en Discord</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Agradecimiento en los creditos</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Peluche sapo sapo de tipo a elegir</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Set de pegatinas premium</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Posibilidad de ser beta tester</p>
+                        <br><hr color="#4e342e"><br>
+                        <p>Acceso anticipado de una semana</p>
+                    </div>
+
+                </div>
+            </section>
 
             <div>
                 <br>
